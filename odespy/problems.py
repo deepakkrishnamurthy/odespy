@@ -1,5 +1,5 @@
 import numpy as np
-from solvers import compile_f77
+from odespy.solvers import compile_f77
 
 class Problem:
     '''

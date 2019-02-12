@@ -64,7 +64,7 @@ class RKF45(Adaptive):
     def initialize(self):
         '''Import extension module _rkf45 and check that it exists.'''
         try:
-            import _rkf45
+            import odespy._rkf45 as _rkf45
             self._rkf45 = _rkf45
         except ImportError:
             raise ImportError('Cannot find the extension module _rkf45.\nRun setup.py again and investigate why _rkf45.so was not successfully built.')

@@ -472,42 +472,42 @@ def _format_parameters_table(parameter_names, fixed_width=None):
     The table is formatted as a simple reST table with headings
     ("Name" and "Description") and three horizontal lines.
     """
-    import textwrap
-    max_line_width = 71
+    pass
+    #import textwrap
+    #max_line_width = 71
 
-    if fixed_width is None:
-        max_name_length = max([len(name) \
-                               for name in parameter_names + ['Name']])
-        c1 = max_name_length + 1     # width of column 1
-        c2 = (max_line_width - c1)   # width of column 2
-    else:
-        c1, c2 = fixed_width
+    #if fixed_width is None:
+    #    max_name_length = max([len(name) for name in parameter_names + ['Name']])
+    #    c1 = max_name_length + 1     # width of column 1
+    #    c2 = (max_line_width - c1)   # width of column 2
+    #else:
+    #    c1, c2 = fixed_width
 
-    s = ''  # string to be returned (table)
-    hrule = '='*c1 + ' ' + '='*c2 + '\n'
-    heading = 'Name' + ' '*(c1-3) + 'Description\n'
-    s += hrule + heading + hrule
+    #s = ''  # string to be returned (table)
+    #hrule = '='*c1 + ' ' + '='*c2 + '\n'
+    #heading = 'Name' + ' '*(c1-3) + 'Description\n'
+    #s += hrule + heading + hrule
 
-    for name in parameter_names:
-        s += '%%-%ds' % (c1+1) % name
-        if name in _parameters:
-            text = _parameters[name]['help']
-            if 'default' in _parameters[name]:
-                text += ' (default: %s)' % str(_parameters[name]['default'])
-            # List of wrapped lines
-            if '\n' not in text:
-                text = textwrap.wrap(text, c2, break_long_words=False)
-            else:
-                # Multi-line help string: keep text as is (often computer code)
-                text = text.splitlines()
-            for i in range(1, len(text)):   # add initial space for line 2, ...
-                text[i] = ' '*(c1+1) + text[i]
-            text = '\n'.join(text)
-            s += text
-        s += '\n'
+    #for name in parameter_names:
+    #    s += '%%-%ds' % (c1+1) % name
+    #    if name in _parameters:
+    #        text = _parameters[name]['help']
+    #        if 'default' in _parameters[name]:
+    #            text += ' (default: %s)' % str(_parameters[name]['default'])
+    #        # List of wrapped lines
+    #        if '\n' not in text:
+    #            text = textwrap.wrap(text, c2, break_long_words=False)
+    #        else:
+    #            # Multi-line help string: keep text as is (often computer code)
+    #            text = text.splitlines()
+    #        for i in range(1, len(text)):   # add initial space for line 2, ...
+    #            text[i] = ' '*(c1+1) + text[i]
+    #        text = '\n'.join(text)
+    #        s += text
+    #    s += '\n'
 
-    s += hrule
-    return s
+    #s += hrule
+    return 
 
 def table_of_parameters(classname):
     """
@@ -525,30 +525,30 @@ def table_of_parameters(classname):
             print ('Do that before proceeding.')
             sys.exit(1)
 
-    s = """
-Required input arguments:
-
-""" + _format_parameters_table(req_prm) + \
-"""
-Optional input arguments:
-
-""" + _format_parameters_table(opt_prm)
-    # Add indent:
-    indent = 4
-    newlines = [' '*indent + line for line in s.splitlines()]
-    s = '\n'.join(newlines)
-    return s
-
-def typeset_toc(toc):
-    toc = sorted(toc)
-    column1_width = max([len(classname) for classname, descr in toc])
-    column2_width = max([len(descr)     for classname, descr in toc])
-    hrule = '='*(column1_width + 1) + ' ' + '='*(column2_width)
-    def line(name, descr):
-        return '%%-%ds %%s' % (column1_width+1) % (name, descr)
-    lines = [hrule, line('Classname', 'Short description'), hrule] + \
-            [line(name, descr) for name, descr in toc] + [hrule]
-    return '\n'.join(lines)
+#    s = """
+#Required input arguments:
+#
+#""" + _format_parameters_table(req_prm) + \
+#"""
+#Optional input arguments:
+#
+#""" + _format_parameters_table(opt_prm)
+#    # Add indent:
+#    indent = 4
+#    newlines = [' '*indent + line for line in s.splitlines()]
+#    s = '\n'.join(newlines)
+#    return s
+#
+#def typeset_toc(toc):
+#    toc = sorted(toc)
+#    column1_width = max([len(classname) for classname, descr in toc])
+#    column2_width = max([len(descr)     for classname, descr in toc])
+#    hrule = '='*(column1_width + 1) + ' ' + '='*(column2_width)
+#    def line(name, descr):
+#        return '%%-%ds %%s' % (column1_width+1) % (name, descr)
+#    lines = [hrule, line('Classname', 'Short description'), hrule] + \
+#            [line(name, descr) for name, descr in toc] + [hrule]
+    return #'\n'.join(lines)
 
 
 

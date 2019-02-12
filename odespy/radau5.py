@@ -80,7 +80,7 @@ defined as (note that rpar,ipar are not used)::
         type=callable),
 )
 
-import solvers
+import odespy.solvers as solvers
 solvers._parameters.update(_parameters_Radau5)
 
 
@@ -280,7 +280,7 @@ class Radau5(Solver):
         if idid < 0:          # Error occurred
             print (self._error_messages[idid] + str(t_new))
             sys.exit(1)   # Interrupt
-	return u_new
+        return u_new
 
 ### end of class Radau5 ###
 

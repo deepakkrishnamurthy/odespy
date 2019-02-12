@@ -1264,37 +1264,37 @@ from odespy.radau5 import *
 import odespy.problems
 
 # Update doc strings with common info
-class_, doc_str, classname = None, None, None
-classnames = [name for name, obj in locals().items() \
-               if inspect.isclass(obj)]
+#class_, doc_str, classname = None, None, None
+#classnames = [name for name, obj in locals().items() \
+#               if inspect.isclass(obj)]
 
-toc = []
-for classname in classnames:
-    class_ = eval(classname)
-    doc_str = getattr(class_, '__doc__')
-    setattr(class_, '__doc__',
-            doc_str + table_of_parameters(class_))
-    if hasattr(class_, 'quick_description'):
-        toc.append((classname, getattr(class_, 'quick_description')))
-
-
-# Make tables of solver name and quick description
-__doc__ =  __doc__ + typeset_toc(toc) + _tutorial
-
-# Do not pollute namespace
-del class_, doc_str, classname, classnames, toc, typeset_toc, \
-    table_of_parameters, name, obj, inspect
-
-if __name__ == '__main__':
-    from os.path import join
-    from numpy.testing import rundocs, run_module_suite
-    import odespy
-    path = odespy.__path__[0]
-
-    # Doctests
-    rundocs(join(path, 'ODE.py'))
-    rundocs(join(path,'RungeKutta.py'))
-
-    # Basic tests
-    path = join(path, 'tests')
-    run_module_suite(join(path, 'test_basics.py'))
+#toc = []
+#for classname in classnames:
+#    class_ = eval(classname)
+#    doc_str = getattr(class_, '__doc__')
+#    setattr(class_, '__doc__',
+#            doc_str + table_of_parameters(class_))
+#    if hasattr(class_, 'quick_description'):
+#        toc.append((classname, getattr(class_, 'quick_description')))
+#
+#
+## Make tables of solver name and quick description
+#__doc__ =  __doc__ + typeset_toc(toc) + _tutorial
+#
+## Do not pollute namespace
+#del class_, doc_str, classname, classnames, toc, typeset_toc, \
+#    table_of_parameters, name, obj, inspect
+#
+#if __name__ == '__main__':
+#    from os.path import join
+#    from numpy.testing import rundocs, run_module_suite
+#    import odespy
+#    path = odespy.__path__[0]
+#
+#    # Doctests
+#    rundocs(join(path, 'ODE.py'))
+#    rundocs(join(path,'RungeKutta.py'))
+#
+#    # Basic tests
+#    path = join(path, 'tests')
+#    run_module_suite(join(path, 'test_basics.py'))
