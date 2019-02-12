@@ -270,7 +270,7 @@ class Radau5(Solver):
         # In the last demo, do not work without printing u_n out. Why?
         # Try demo_Radau5_5_fortran.py
         """
-        if not hasattr(self, 'printed'):
+        if not hasattr(self, 'printed'):)
             print u[n].copy()
             self.printed = True"""
 
@@ -278,7 +278,7 @@ class Radau5(Solver):
                              *args, **self._extra_args_fortran)
 
         if idid < 0:          # Error occurred
-            print self._error_messages[idid] + str(t_new)
+            print (self._error_messages[idid] + str(t_new))
             sys.exit(1)   # Interrupt
 	return u_new
 

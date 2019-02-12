@@ -1,6 +1,6 @@
 """Module for wrapping rkc.f."""
 
-from solvers import Solver, Adaptive
+import odespy.solvers as solvers
 import numpy as np
 
 # f_f77 and other items are defined in odepack.py and will
@@ -31,10 +31,9 @@ This subroutine should be defined in form:
         type=callable),
     )
 
-import solvers
 solvers._parameters.update(_parameters_RKC)
 
-class RKC(Adaptive):
+class RKC(solvers.Adaptive):
     """
     Wrapper for rkc.f, a well-known Fortran ODE solver.
 
@@ -73,7 +72,7 @@ class RKC(Adaptive):
     quick_description = \
         "Explicit 2nd-order Runge-Kutta-Chebyshev method (rkc.f)"
 
-    _optional_parameters = Adaptive._optional_parameters + \
+    _optional_parameters = solvers.Adaptive._optional_parameters + \
         ['f_f77', 'spcrad', 'spcrad_f77', 'jac_constant']
     # The following step parameters are illegal for rkc.f
     _optional_parameters.remove('first_step')
@@ -105,13 +104,13 @@ class RKC(Adaptive):
         atol = self.atol
         if not isinstance(atol,float):
             if len(atol) not in (1, self.neq):
-                raise ValueError,  '''
+                raise ValueError(  '''
 ATOL =%s should be either a scalar or a vector of length NEQ=%d.
-           ''' % (str(atol), self.neq)
+           ''' % (str(atol), self.neq))
 
     def validate_data(self):
         self.check_atol()
-        return Adaptive.validate_data(self)
+        return solvers.Adaptive.validate_data(self)
 
     def initialize_for_solve(self):
         # INFO(4) is an integer array to specify how the problem
@@ -150,7 +149,7 @@ ATOL =%s should be either a scalar or a vector of length NEQ=%d.
         # We call Solver and not Adaptive below because Adaptive
         # just computes first_step, min_step and max_step, all of
         # which are non-used parameters for rkc.f
-        Solver.initialize_for_solve(self)   # Common settings
+        solvers.Solver.initialize_for_solve(self)   # Common settings
 
     def initialize(self):
         """Import extension module _rkc and check that it exists."""

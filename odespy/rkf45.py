@@ -1,6 +1,6 @@
 """Module for wrapping rkf45.py."""
 
-from solvers import Solver, Adaptive
+from odespy.solvers import Solver, Adaptive
 import numpy as np
 
 
