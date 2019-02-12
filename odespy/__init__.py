@@ -386,7 +386,7 @@ A complete program can be as follows (`logistic5.py <https://github.com/hplgit/o
             return abs(u[step_no] - R) < tol:
 
         u, t = solver.solve(time_points, terminate)
-        print 'Final u(t=%g)=%g' % (t[-1], u[-1])
+        print ('Final u(t=%g)=%g' % (t[-1], u[-1]))
 
         from matplotlib.pyplot import *
         plot(t, u, 'r-')
@@ -449,7 +449,7 @@ the ideas (`logistic6.py <https://github.com/hplgit/odespy/blob/master/doc/src/o
                 time_points = np.linspace(0, self.problem.T, self.N+1)
                 self.u, self.t = self.solver.solve(
                     time_points, self.problem.terminate)
-                print 'Final u(t=%g)=%g' % (t[-1], u[-1])
+                print( 'Final u(t=%g)=%g' % (t[-1], u[-1]))
 
             def plot(self):
                 mpl.plot(self.t, self.u, 'r-',
@@ -722,7 +722,7 @@ solvers can be listed by
 >>> import odespy
 >>> methods = list_all_solvers()
 >>> for method in methods:
-...   print method
+...   print( method)
 ...
 AdamsBashMoulton2
 AdamsBashMoulton3
@@ -778,7 +778,7 @@ The loop over the chosen solvers may look like
 
         for solver in solvers:
             solver_name = str(solver)  # short description of solver
-            print solver_name
+            print( solver_name)
 
             solver.set_initial_condition([problem.Theta, 0])
             N = N_per_period*problem.period
@@ -1024,13 +1024,13 @@ A simple program testing one numerical method goes as follows (`gaussian1.py <ht
         u, t = solver.solve(tp)
 
         method = solver.__class__.__name__
-        print '%.4f  %s' % (u.max(), method)
+        print ('%.4f  %s' % (u.max(), method))
 
         if solver.has_u_t_all():
             plt.plot(solver.t_all, solver.u_all, 'bo',
                      tp, problem.u_exact(tp))
-            print '%s used %d steps (%d specified)' % \
-                  (method, len(solver.u_all), len(tp))
+            print ('%s used %d steps (%d specified)' % \
+                  (method, len(solver.u_all), len(tp)))
         else:
             plt.plot(tp, solver.u, tp, problem.u_exact(tp))
         plt.legend([method, 'exact'])
@@ -1255,13 +1255,13 @@ The file `logistic10.py <https://github.com/hplgit/odespy/blob/master/doc/src/od
 with :math:`f(u,t)` implemented in Fortran.
 '''
 
-from solvers import *
-from RungeKutta import *
-from rkc import *
-from rkf45 import *
-from odepack import *
-from radau5 import *
-import problems
+from odespy.solvers import *
+from odespy.RungeKutta import *
+from odespy.rkc import *
+from odespy.rkf45 import *
+from odespy.odepack import *
+from odespy.radau5 import *
+import odespy.problems
 
 # Update doc strings with common info
 class_, doc_str, classname = None, None, None
