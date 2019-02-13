@@ -1,5 +1,5 @@
 import odespy.solvers as solvers
-import numpy as np
+import numpy as np 
 
 def _calculate_order_1_level(coefficients):
     """
@@ -98,7 +98,7 @@ class RungeKutta2level(solvers.Adaptive):
         return order
 
     def initialize_for_solve(self):
-        Adaptive.initialize_for_solve(self)
+        solvers.Adaptive.initialize_for_solve(self)
         self.info = {'rejected' : 0}
 
     def advance(self):
