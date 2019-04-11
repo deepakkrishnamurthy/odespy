@@ -13,7 +13,7 @@ and then adding "spy" as in the English word *spy*.
 
 #### Pip
 
-Odespy requires Python version 2.7.  The simplest procedure for
+This version of Odespy supprots Python 3.  The simplest procedure for
 installing Odespy is to use `pip`:
 
 
