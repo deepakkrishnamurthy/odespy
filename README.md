@@ -13,7 +13,7 @@ and then adding "spy" as in the English word *spy*.
 
 #### Pip
 
-This version of Odespy supprots Python 3.  The simplest procedure for
+In this version some changes has been made to (hplgit/odespy) so that odespy can also be used with Python 3.  The simplest procedure for
 installing Odespy is to use `pip`:
 
 
