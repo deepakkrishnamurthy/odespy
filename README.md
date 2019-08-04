@@ -11,23 +11,12 @@ and then adding "spy" as in the English word *spy*.
 
 ### How do I install Odespy?
 
-#### Pip
-
-In this version some changes has been made to (hplgit/odespy) so that odespy can also be used with Python 3.  The simplest procedure for
-installing Odespy is to use `pip`:
-
-
-```
-Terminal> sudo pip install -e git+https://github.com/hplgit/odespy.git#egg=odespy
-```
 
 #### Clone/fork repo
 
-Alternatively, you can check out this repo and run `setup.py`:
-
 
 ```
-Terminal> git clone git@github.com:hplgit/odespy.git
+Terminal> git clone https://github.com/rajeshrinet/odespy.git
 Terminal> cd odespy
 Terminal> sudo python setup.py install
 ```
